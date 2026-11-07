@@ -20,7 +20,7 @@ function Thumb({ photo, big }: { photo: Photo; big: boolean }) {
       decoding="async"
       onError={() => setBroken(true)}
       style={{ objectPosition: photo.position ?? 'center' }}
-      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 motion-reduce:transform-none"
+      className="block h-auto w-full transition-transform duration-700 group-hover:scale-105 motion-reduce:transform-none md:absolute md:inset-0 md:h-full md:object-cover"
     />
   );
 }
@@ -104,18 +104,24 @@ function Lightbox({ photos, index, onClose, onGo }: { photos: Photo[]; index: nu
   );
 }
 
+const PHONE_LIMIT = 4;
+
 function AlbumGrid({ photos, onOpen }: { photos: Photo[]; onOpen: (i: number, el: HTMLElement) => void }) {
   const { t } = useLang();
+  const [all, setAll] = useState(false);
+  const hiddenCount = photos.length - PHONE_LIMIT;
   return (
-    <ul className="grid auto-rows-[10rem] grid-cols-2 gap-3 sm:auto-rows-[12rem] md:gap-4 lg:grid-cols-3 lg:auto-rows-[14rem]">
+    <>
+    {/* Phones: one column, each photo shown whole. Wider screens: mosaic grid. */}
+    <ul className="grid grid-cols-1 gap-3 md:auto-rows-[12rem] md:grid-cols-3 md:gap-4 lg:auto-rows-[14rem]">
       {photos.map((p, i) => {
         const big = i === 0;
         // Fill the last row so the grid never leaves an empty hole.
         const isLast = i === photos.length - 1 && i > 0;
         const n = photos.length;
-        const mob = isLast && (n - 1) % 2 === 1 ? 'col-span-2' : '';
         const rem = n > 3 ? (n - 3) % 3 : 0;
-        const lg = isLast && rem === 2 ? 'lg:col-span-2' : isLast && rem === 1 ? 'lg:col-span-3' : isLast && mob ? 'lg:col-span-1' : '';
+        const span = isLast && rem === 2 ? 'md:col-span-2' : isLast && rem === 1 ? 'md:col-span-3' : '';
+        const phoneHidden = !all && i >= PHONE_LIMIT ? 'max-md:hidden' : '';
         return (
           <m.li
             key={p.image}
@@ -123,12 +129,12 @@ function AlbumGrid({ photos, onOpen }: { photos: Photo[]; onOpen: (i: number, el
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: (i % 6) * 0.06 }}
-            className={big ? 'col-span-2 row-span-2' : `${mob} ${lg}`}
+            className={`${big ? 'md:col-span-2 md:row-span-2' : span} ${phoneHidden}`}
           >
             <button
               type="button"
               onClick={(e) => onOpen(i, e.currentTarget)}
-              className="group relative block h-full w-full overflow-hidden rounded-3xl bg-navy text-start"
+              className="group relative block w-full overflow-hidden rounded-3xl bg-navy text-start md:h-full"
               aria-label={`${t(p.caption)} — ${t({ ar: 'عرض الصورة', en: 'view photo' })}`}
             >
               <Thumb photo={p} big={big} />
@@ -140,15 +146,25 @@ function AlbumGrid({ photos, onOpen }: { photos: Photo[]; onOpen: (i: number, el
         );
       })}
     </ul>
+    {!all && hiddenCount > 0 && (
+      <button
+        type="button"
+        onClick={() => setAll(true)}
+        className="mt-4 w-full rounded-2xl border-2 border-navy/20 py-3 font-bold text-navy dark:border-white/20 dark:text-white md:hidden"
+      >
+        {t({ ar: `عرض كل الصور (${photos.length})`, en: `Show all photos (${photos.length})` })}
+      </button>
+    )}
+    </>
   );
 }
 
 function ComingSoon({ count }: { count: number }) {
   const { t } = useLang();
   return (
-    <ul className="grid auto-rows-[10rem] grid-cols-2 gap-3 sm:auto-rows-[12rem] md:gap-4 lg:grid-cols-3 lg:auto-rows-[14rem]">
+    <ul className="grid grid-cols-1 gap-3 md:auto-rows-[12rem] md:grid-cols-3 md:gap-4 lg:auto-rows-[14rem]">
       {Array.from({ length: count }, (_, i) => (
-        <li key={i} className={`relative overflow-hidden rounded-3xl ${i === 0 ? 'col-span-2 row-span-2' : ''}`}>
+        <li key={i} className={`relative aspect-video overflow-hidden rounded-3xl md:aspect-auto ${i === 0 ? 'md:col-span-2 md:row-span-2' : 'max-md:hidden'}`}>
           <BrandPlaceholder className="absolute inset-0" logo={i === 0} />
           {i === 0 && (
             <span className="absolute bottom-4 start-4 rounded-full bg-white/95 px-4 py-2 text-sm font-bold text-navy shadow">{t(gallery.soon)}</span>

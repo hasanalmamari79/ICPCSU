@@ -8,13 +8,18 @@ import { asset } from '../lib/asset';
 import { BrandPlaceholder } from './BrandPlaceholder';
 import { ChevronIcon, PauseIcon, PlayIcon } from './Icons';
 import { ButtonLink } from './ui';
+import { useMedia } from '../lib/useMedia';
 
 function SlideImage({ item, active, priority }: { item: NewsItem; active: boolean; priority: boolean }) {
   const { t } = useLang();
   const reduce = useReducedMotion();
   const [broken, setBroken] = useState(false);
+  const wide = useMedia('(min-width: 768px)');
   if (!item.image || broken) return <BrandPlaceholder className="absolute inset-0" />;
   return (
+    <>
+    {/* Phones: blurred copy fills the frame behind the full, uncropped photo */}
+    {!wide && <img src={asset(item.imageSmall ?? item.image)} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-xl" />}
     <m.img
       src={asset(item.image)}
       srcSet={item.imageSmall ? `${asset(item.imageSmall)} 600w, ${asset(item.image)} 1280w` : undefined}
@@ -26,13 +31,14 @@ function SlideImage({ item, active, priority }: { item: NewsItem; active: boolea
       decoding="async"
       {...(priority ? { fetchpriority: 'high' } : {})}
       onError={() => setBroken(true)}
-      style={{ objectPosition: item.imagePosition ?? 'center' }}
-      className="absolute inset-0 h-full w-full object-cover"
-      // Ken Burns: slow zoom while the slide is on screen.
+      style={{ objectPosition: wide ? (item.imagePosition ?? 'center') : 'center' }}
+      className="absolute inset-0 h-full w-full object-contain md:object-cover"
+      // Ken Burns (wide screens only, so phones always see the whole photo).
       initial={{ scale: 1 }}
-      animate={{ scale: active && !reduce ? 1.09 : 1 }}
+      animate={{ scale: active && !reduce && wide ? 1.09 : 1 }}
       transition={{ duration: site.newsSlideSeconds + 1.5, ease: 'linear' }}
     />
+    </>
   );
 }
 
@@ -87,7 +93,7 @@ export function NewsSlider() {
       id="top"
       aria-roledescription="carousel"
       aria-label={t({ ar: 'آخر الأخبار', en: 'Latest news' })}
-      className="on-dark relative isolate h-[clamp(460px,78svh,760px)] w-full overflow-hidden bg-ink text-white"
+      className="on-dark relative isolate grid w-full overflow-hidden bg-ink text-white md:block md:h-[clamp(460px,78svh,760px)]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setFocused(true)}
@@ -102,29 +108,31 @@ export function NewsSlider() {
           role="group"
           aria-roledescription="slide"
           aria-label={`${index + 1} / ${count}`}
-          className="absolute inset-0"
+          className="relative [grid-area:1/1] md:absolute md:inset-0"
           custom={direction}
           initial={{ opacity: 0, x: `${direction * sign * 6}%` }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: `${-direction * sign * 6}%` }}
           transition={{ duration: 0.8, ease: [0.3, 0.7, 0.2, 1] }}
         >
-          <SlideImage item={item} active priority={index === 0} />
-          {/* Legibility scrim: dark at the bottom where the headline sits */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(15,26,42,.95)_0%,rgba(15,26,42,.75)_35%,rgba(15,26,42,.1)_70%,rgba(15,26,42,.25)_100%)]" />
+          <div className="relative aspect-video overflow-hidden md:absolute md:inset-0 md:aspect-auto">
+            <SlideImage item={item} active priority={index === 0} />
+          </div>
+          {/* Legibility scrim (wide screens): dark at the bottom where the headline sits */}
+          <div className="absolute inset-0 hidden md:block bg-[linear-gradient(to_top,rgba(15,26,42,.95)_0%,rgba(15,26,42,.75)_35%,rgba(15,26,42,.1)_70%,rgba(15,26,42,.25)_100%)]" />
 
-          <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-4 pb-24 sm:px-6 md:pb-28 lg:px-8">
+          <div className="relative mx-auto min-h-[15.5rem] max-w-6xl px-4 pb-24 pt-5 sm:px-6 md:absolute md:inset-x-0 md:bottom-0 md:min-h-0 md:pb-28 md:pt-0 lg:px-8">
             <m.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.6, ease: 'easeOut' }}
               className="max-w-4xl"
             >
-              <p className="mb-3 inline-flex items-center gap-2 font-mono text-xs font-bold uppercase ltr:tracking-widest text-sun sm:text-sm">
+              <p className="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase ltr:font-mono ltr:tracking-widest text-sun sm:text-sm">
                 <span className="inline-block h-2 w-2 rounded-full bg-ruby motion-safe:animate-pulse" aria-hidden="true" />
                 {t(item.kicker)}
               </p>
-              <h2 className="text-[1.9rem] font-black leading-[1.15] sm:text-5xl md:text-6xl">{t(item.headline)}</h2>
+              <h2 className="text-[1.65rem] font-black leading-[1.2] sm:text-5xl md:text-6xl">{t(item.headline)}</h2>
               <p className="mt-3 max-w-2xl text-base text-white/85 sm:text-xl">{t(item.subtitle)}</p>
               <div className="mt-6">
                 <ButtonLink href={item.cta.href} size="md">

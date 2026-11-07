@@ -7,6 +7,7 @@ import { asset } from '../lib/asset';
 import { BrandPlaceholder } from './BrandPlaceholder';
 import { ChevronIcon, CloseIcon, FilmIcon, PauseIcon, PlayIcon, ReplayIcon } from './Icons';
 import { ButtonLink } from './ui';
+import { useMedia } from '../lib/useMedia';
 
 type Ctx = { open: (opener?: HTMLElement | null) => void };
 const DocContext = createContext<Ctx>({ open: () => {} });
@@ -51,6 +52,7 @@ function youtubeId(url: string) {
 function Media({ ch, reduce }: { ch: Chapter; reduce: boolean | null }) {
   const { t } = useLang();
   const [broken, setBroken] = useState(false);
+  const wide = useMedia('(min-width: 768px)');
   if (ch.video) {
     const id = youtubeId(ch.video);
     return id ? (
@@ -67,16 +69,19 @@ function Media({ ch, reduce }: { ch: Chapter; reduce: boolean | null }) {
   }
   if (!ch.image || broken) return <BrandPlaceholder className="absolute inset-0" />;
   return (
+    <>
+    {!wide && <img src={asset(ch.image)} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-2xl" />}
     <m.img
       src={asset(ch.image)}
       alt=""
       onError={() => setBroken(true)}
-      style={{ objectPosition: ch.imagePosition ?? 'center' }}
-      className="absolute inset-0 h-full w-full object-cover"
-      initial={{ scale: 1.02 }}
-      animate={{ scale: reduce ? 1.02 : 1.14 }}
+      style={{ objectPosition: wide ? (ch.imagePosition ?? 'center') : 'center 30%' }}
+      className="absolute inset-x-0 top-20 h-[58%] w-full object-contain md:inset-0 md:h-full md:object-cover"
+      initial={{ scale: wide ? 1.02 : 1 }}
+      animate={{ scale: reduce || !wide ? 1 : 1.14 }}
       transition={{ duration: documentary.secondsPerChapter + 2, ease: 'linear' }}
     />
+    </>
   );
 }
 
@@ -221,7 +226,7 @@ function Viewer({ onClose }: { onClose: () => void }) {
               transition={{ duration: 0.5, delay: 0.15 }}
               aria-live="polite"
             >
-              <p className="font-mono text-xs font-bold uppercase ltr:tracking-widest text-sun sm:text-sm">
+              <p className="text-xs font-bold uppercase text-sun ltr:font-mono ltr:tracking-widest sm:text-sm">
                 {t(documentary.chapter)} {i + 1} · {t(ch.kicker)}
               </p>
               <h2 className="mt-2 text-4xl font-black leading-tight sm:text-6xl">{t(ch.title)}</h2>

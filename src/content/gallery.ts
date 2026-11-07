@@ -37,6 +37,15 @@ export const gallery = {
       },
       placeholders: 3,
     },
+    {
+      id: 'acpc',
+      label: { ar: 'ACPC 2026 · مصر', en: 'ACPC 2026 · Egypt' },
+      text: {
+        ar: 'لأول مرة في تاريخ جامعة صحار: فريق Error 418 في البطولة العربية الأفريقية للبرمجة.',
+        en: 'A first for Sohar University: team Error 418 at the Africa & Arab Collegiate Programming Championship.',
+      },
+      placeholders: 3,
+    },
   ] as Album[],
   photos: [
     // ── Al Batinah qualifiers · Sohar University ──
@@ -80,7 +89,23 @@ export const gallery = {
       alt: { ar: 'متسابقون مع عبارة: الإنجاز جماعي والفخر للجميع', en: 'Contestants with the words: the achievement is shared, the pride belongs to all' },
       caption: { ar: 'الإنجاز جماعي… والفخر للجميع', en: 'A shared achievement… pride for everyone' },
     },
+    // ── ACPC 2026 · Egypt ──
+    {
+      album: 'acpc',
+      image: 'images/gallery/acpc-official-announcement.webp',
+      imageSmall: 'images/gallery/acpc-official-announcement-600.webp',
+      position: 'center 30%',
+      alt: { ar: 'إعلان جامعة صحار الرسمي عن التأهل إلى البطولة العربية الأفريقية للبرمجة ACPC 2026', en: 'Sohar University’s official announcement of the ACPC 2026 qualification' },
+      caption: { ar: 'الإعلان الرسمي لجامعة صحار: لأول مرة إلى ACPC 2026', en: 'Sohar University’s official announcement: first time at ACPC 2026' },
+    },
     // ── OCPC · Sultan Qaboos University ──
+    {
+      album: 'ocpc',
+      image: 'images/gallery/acpc-full-team.webp',
+      imageSmall: 'images/gallery/acpc-full-team-600.webp',
+      alt: { ar: 'فرق جامعة صحار الخمسة مع المشرف وعلم الجامعة أمام جدار OCPC 2026', en: 'All five Sohar University teams with their supervisor and the university flag at OCPC 2026' },
+      caption: { ar: 'الفرق الخمسة — 15 متسابقًا من جامعة صحار', en: 'All five teams — 15 Sohar University contestants' },
+    },
     {
       album: 'ocpc',
       image: 'images/gallery/ocpc-scoreboard-team.webp',
@@ -130,6 +155,13 @@ export const gallery = {
       imageSmall: 'images/gallery/ocpc-opening-ceremony-600.webp',
       alt: { ar: 'قاعة حفل OCPC 2026 ممتلئة بالمتسابقين والضيوف', en: 'The OCPC 2026 ceremony hall filled with contestants and guests' },
       caption: { ar: 'حفل مسابقة عُمان للبرمجة الجامعية 2026', en: 'The Oman Collegiate Programming Contest 2026 ceremony' },
+    },
+    {
+      album: 'ocpc',
+      image: 'images/gallery/ocpc-team-supervisors.webp',
+      imageSmall: 'images/gallery/ocpc-team-supervisors-600.webp',
+      alt: { ar: 'متسابقات جامعة صحار مع المشرفين في قاعة المسابقة', en: 'Sohar University contestants with their supervisors in the contest hall' },
+      caption: { ar: 'فريق ومشرفوه… قبل بدء التحدي', en: 'A team and its supervisors… before the challenge' },
     },
     {
       album: 'ocpc',

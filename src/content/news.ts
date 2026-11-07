@@ -34,11 +34,12 @@ export const news: NewsItem[] = [
       ar: 'فريق Error 418 خامسًا على عُمان في OCPC 2026… ومتأهلًا إلى ACPC 2026 في مصر.',
       en: 'Team Error 418 finished 5th in Oman at OCPC 2026… and is heading to ACPC 2026 in Egypt.',
     },
-    image: 'images/news-acpc-scoreboard.webp',
-    imageSmall: 'images/news-acpc-scoreboard-768.webp', // 768px
+    image: 'images/gallery/acpc-full-team.webp',
+    imageSmall: 'images/gallery/acpc-full-team-600.webp',
+    imagePosition: 'center 40%',
     imageAlt: {
-      ar: 'متسابقو جامعة صحار أمام لوحة النتائج في المسابقة',
-      en: 'Sohar University contestants in front of the contest scoreboard',
+      ar: 'فرق جامعة صحار مع المشرف وعلم الجامعة في OCPC 2026',
+      en: 'Sohar University teams with their supervisor and the university flag at OCPC 2026',
     },
     cta: { label: { ar: 'انضم الآن', en: 'Join now' }, href: 'join' },
   },

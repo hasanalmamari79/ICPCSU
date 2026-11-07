@@ -105,6 +105,13 @@ export const gallery = {
     },
     {
       album: 'ocpc',
+      image: 'images/gallery/ocpc-women-flag.webp',
+      imageSmall: 'images/gallery/ocpc-women-flag-600.webp',
+      alt: { ar: 'متسابقات جامعة صحار يرفعن علم الجامعة أمام جدار OCPC 2026', en: 'Sohar University contestants holding the university flag in front of the OCPC 2026 wall' },
+      caption: { ar: 'متسابقات جامعة صحار أمام جدار OCPC 2026', en: 'Sohar University contestants at the OCPC 2026 wall' },
+    },
+    {
+      album: 'ocpc',
       image: 'images/gallery/ocpc-triple-bits.webp',
       imageSmall: 'images/gallery/ocpc-triple-bits-600.webp',
       alt: { ar: 'فريق Triple Bits من جامعة صحار يحل المسائل على الورق', en: 'The Triple Bits team from Sohar University working through problems on paper' },
@@ -126,10 +133,25 @@ export const gallery = {
     },
     {
       album: 'ocpc',
+      image: 'images/gallery/ocpc-regional-director.webp',
+      imageSmall: 'images/gallery/ocpc-regional-director-600.webp',
+      alt: { ar: 'شاشة حفل OCPC تعلن كلمة المدير الإقليمي لمسابقة عُمان الجامعية للبرمجة', en: 'The OCPC ceremony screen announcing the regional director’s speech' },
+      caption: { ar: 'كلمة المدير الإقليمي في حفل OCPC 2026', en: 'The regional director’s address at OCPC 2026' },
+    },
+    {
+      album: 'ocpc',
       image: 'images/gallery/ocpc-honoring.webp',
       imageSmall: 'images/gallery/ocpc-honoring-600.webp',
       alt: { ar: 'تكريم ممثل جامعة صحار على المسرح في حفل OCPC 2026', en: 'A Sohar University representative honoured on stage at the OCPC 2026 ceremony' },
       caption: { ar: 'لحظة تكريم في حفل OCPC 2026', en: 'An honouring moment at the OCPC 2026 ceremony' },
+    },
+    {
+      album: 'ocpc',
+      image: 'images/gallery/ocpc-thumbs-up.webp',
+      imageSmall: 'images/gallery/ocpc-thumbs-up-600.webp',
+      position: 'center 35%',
+      alt: { ar: 'مشرف النادي يرفع إبهامه مبتسمًا في قاعة المسابقة', en: 'The club supervisor smiling with a thumbs-up in the contest hall' },
+      caption: { ar: 'كل شيء تمام!', en: 'All good!' },
     },
     {
       album: 'ocpc',

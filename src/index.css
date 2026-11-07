@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  html[lang='ar'] body { font-family: 'IBM Plex Sans Arabic', 'Archivo', system-ui, sans-serif; }
+  html[lang='en'] body { font-family: 'Archivo', 'IBM Plex Sans Arabic', system-ui, sans-serif; }
+  body {
+    @apply bg-surface text-ink antialiased dark:bg-ink dark:text-white;
+    overflow-x: hidden;
+  }
+  /* Arabic headings read better slightly less heavy and with more line height */
+  html[lang='ar'] h1, html[lang='ar'] h2, html[lang='ar'] h3 { line-height: 1.35; }
+
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 3px solid #1561a4;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .on-dark :focus-visible { outline-color: #f2b43c; }
+  @media (prefers-color-scheme: dark) {
+    :focus-visible { outline-color: #f2b43c; }
+  }
+  ::selection { background: #f2b43c; color: #0f1a2a; }
+}
+
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Reduced motion: stop all ambient/decorative CSS animation. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

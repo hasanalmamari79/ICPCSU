@@ -31,8 +31,8 @@ export const news: NewsItem[] = [
       en: 'For the first time, Sohar University qualifies for ACPC',
     },
     subtitle: {
-      ar: 'فريق Error 418 خامسًا على عُمان في OCPC 2026… ومتأهلًا إلى المسابقة العربية.',
-      en: 'Team Error 418 finished 5th in Oman at OCPC 2026… and is heading to the Arab regional contest.',
+      ar: 'فريق Error 418 خامسًا على عُمان في OCPC 2026… ومتأهلًا إلى ACPC 2026 في مصر.',
+      en: 'Team Error 418 finished 5th in Oman at OCPC 2026… and is heading to ACPC 2026 in Egypt.',
     },
     image: 'images/news-acpc-scoreboard.webp',
     imageSmall: 'images/news-acpc-scoreboard-768.webp', // 768px

@@ -89,7 +89,7 @@ export const icpc = {
   path: [
     { title: { ar: 'التصفيات الإقليمية', en: 'Regional qualifiers' }, text: { ar: 'على مستوى المحافظات — مثل تصفيات الباطنة', en: 'Governorate level — e.g. Al Batinah' } },
     { title: { ar: 'الوطنية (OCPC)', en: 'National (OCPC)' }, text: { ar: 'مسابقة عُمان للبرمجة الجامعية', en: 'Oman Collegiate Programming Contest' } },
-    { title: { ar: 'الإقليمية (ACPC)', en: 'Regional (ACPC)' }, text: { ar: 'المسابقة العربية للبرمجة', en: 'Arab Collegiate Programming Contest' } },
+    { title: { ar: 'الإقليمية (ACPC)', en: 'Regional (ACPC)' }, text: { ar: 'البطولة العربية الأفريقية للبرمجة', en: 'Africa & Arab Collegiate Programming Championship' } },
     { title: { ar: 'النهائيات العالمية', en: 'World Finals' }, text: { ar: 'أفضل فرق العالم', en: "The world's best teams" } },
   ],
   link: { ar: 'الموقع الرسمي لـ ICPC', en: 'Official ICPC website' },

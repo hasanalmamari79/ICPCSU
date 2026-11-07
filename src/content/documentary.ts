@@ -58,8 +58,8 @@ export const documentary = {
       kicker: { ar: 'لأول مرة', en: 'For the first time' },
       title: { ar: 'إلى ACPC', en: 'On to ACPC' },
       text: {
-        ar: 'المركز الخامس على مستوى عُمان… وفريق Error 418 يتأهل إلى المسابقة العربية للبرمجة الجامعية — الأول في تاريخ الجامعة.',
-        en: '5th place in Oman… and team Error 418 qualifies for the Arab Collegiate Programming Contest — a first in the university’s history.',
+        ar: 'المركز الخامس على مستوى عُمان… وفريق Error 418 يتأهل إلى البطولة العربية الأفريقية للبرمجة ACPC 2026 في مصر — الأول في تاريخ الجامعة.',
+        en: '5th place in Oman… and team Error 418 qualifies for the Africa & Arab Collegiate Programming Championship (ACPC 2026) in Egypt — a first in the university’s history.',
       },
       image: 'images/gallery/ocpc-scoreboard-team.webp',
     },

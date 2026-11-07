@@ -52,8 +52,8 @@ export const achievements = {
       date: { ar: '[أضف التاريخ]', en: '[Add date]' },
       title: { ar: 'لأول مرة: فريق يتأهل إلى ACPC', en: 'First ever ACPC qualification' },
       text: {
-        ar: 'فريق Error 418 يتأهل إلى المسابقة العربية للبرمجة الجامعية — لأول مرة في تاريخ جامعة صحار.',
-        en: 'Team Error 418 qualifies for the Arab Collegiate Programming Contest — a first in Sohar University history.',
+        ar: 'فريق Error 418 يتأهل إلى البطولة العربية الأفريقية للبرمجة ACPC 2026 في مصر — لأول مرة في تاريخ جامعة صحار.',
+        en: 'Team Error 418 qualifies for the Africa & Arab Collegiate Programming Championship (ACPC 2026) in Egypt — a first in Sohar University history.',
       },
       highlight: true,
     },

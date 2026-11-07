@@ -35,7 +35,7 @@ export const news: NewsItem[] = [
       en: 'Team Error 418 finished 5th in Oman at OCPC 2026… and is heading to the Arab regional contest.',
     },
     image: 'images/news-acpc-scoreboard.webp',
-    imageSmall: 'images/news-acpc-scoreboard-768.webp',
+    imageSmall: 'images/news-acpc-scoreboard-768.webp', // 768px
     imageAlt: {
       ar: 'متسابقو جامعة صحار أمام لوحة النتائج في المسابقة',
       en: 'Sohar University contestants in front of the contest scoreboard',
@@ -85,11 +85,12 @@ export const news: NewsItem[] = [
       ar: 'مؤسسون ومدربون وأعضاء يجمعهم شغف حل المسائل.',
       en: 'Founders, coaches and members united by a love of problem solving.',
     },
-    image: 'images/team-stage-side.webp',
-    imageSmall: 'images/team-stage-side-768.webp',
+    image: 'images/gallery/ocpc-sunset-selfie.webp',
+    imageSmall: 'images/gallery/ocpc-sunset-selfie-600.webp',
+    imagePosition: 'center 40%',
     imageAlt: {
-      ar: 'صف من أعضاء النادي بجانب علم جامعة صحار',
-      en: 'A line of club members next to the Sohar University flag',
+      ar: 'متسابقو جامعة صحار مع المشرف وقت الغروب في جامعة السلطان قابوس',
+      en: 'Sohar University contestants with their supervisor at sunset at Sultan Qaboos University',
     },
     cta: { label: { ar: 'اقرأ المزيد', en: 'Read more' }, href: '#team' },
   },

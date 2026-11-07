@@ -90,6 +90,21 @@ export const gallery = {
     },
     {
       album: 'ocpc',
+      image: 'images/gallery/ocpc-sunset-selfie.webp',
+      imageSmall: 'images/gallery/ocpc-sunset-selfie-600.webp',
+      alt: { ar: 'سيلفي لمتسابقي جامعة صحار مع المشرف وقت الغروب في حرم جامعة السلطان قابوس', en: 'Sohar University contestants taking a sunset selfie with their supervisor on the Sultan Qaboos University campus' },
+      caption: { ar: 'سيلفي الغروب في حرم جامعة السلطان قابوس', en: 'Sunset selfie on the Sultan Qaboos University campus' },
+    },
+    {
+      album: 'ocpc',
+      image: 'images/gallery/ocpc-flag-banner.webp',
+      imageSmall: 'images/gallery/ocpc-flag-banner-600.webp',
+      position: 'center 55%',
+      alt: { ar: 'متسابقون من جامعة صحار يرفعون علم الجامعة تحت لافتة OCPC 2026', en: 'Sohar University contestants holding the university flag under the OCPC 2026 banner' },
+      caption: { ar: 'علم جامعة صحار تحت لافتة OCPC 2026', en: 'The Sohar University flag under the OCPC 2026 banner' },
+    },
+    {
+      album: 'ocpc',
       image: 'images/gallery/ocpc-triple-bits.webp',
       imageSmall: 'images/gallery/ocpc-triple-bits-600.webp',
       alt: { ar: 'فريق Triple Bits من جامعة صحار يحل المسائل على الورق', en: 'The Triple Bits team from Sohar University working through problems on paper' },
@@ -115,6 +130,14 @@ export const gallery = {
       imageSmall: 'images/gallery/ocpc-honoring-600.webp',
       alt: { ar: 'تكريم ممثل جامعة صحار على المسرح في حفل OCPC 2026', en: 'A Sohar University representative honoured on stage at the OCPC 2026 ceremony' },
       caption: { ar: 'لحظة تكريم في حفل OCPC 2026', en: 'An honouring moment at the OCPC 2026 ceremony' },
+    },
+    {
+      album: 'ocpc',
+      image: 'images/gallery/ocpc-hall-portrait.webp',
+      imageSmall: 'images/gallery/ocpc-hall-portrait-600.webp',
+      position: 'center 40%',
+      alt: { ar: 'مشرف النادي مع أحد المتسابقين في قاعة المسابقة', en: 'The club supervisor with a contestant in the contest hall' },
+      caption: { ar: 'المشرف مع أحد متسابقينا في قاعة المسابقة', en: 'Our supervisor with one of our contestants in the hall' },
     },
     {
       album: 'ocpc',

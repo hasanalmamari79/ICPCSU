@@ -17,7 +17,7 @@ function SlideImage({ item, active, priority }: { item: NewsItem; active: boolea
   return (
     <m.img
       src={asset(item.image)}
-      srcSet={item.imageSmall ? `${asset(item.imageSmall)} 768w, ${asset(item.image)} 1280w` : undefined}
+      srcSet={item.imageSmall ? `${asset(item.imageSmall)} 600w, ${asset(item.image)} 1280w` : undefined}
       sizes="100vw"
       alt={t(item.imageAlt)}
       width={1280}

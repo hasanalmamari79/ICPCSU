@@ -70,6 +70,8 @@ export const documentary = {
         ar: 'الفصل القادم يُكتب الآن… وقد تكون أنت فيه.',
         en: 'The next chapter is being written now… and you could be in it.',
       },
+      image: 'images/gallery/ocpc-sunset-selfie.webp',
+      imagePosition: 'center 40%',
       cta: true,
     },
   ] as Chapter[],
